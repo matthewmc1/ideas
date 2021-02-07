@@ -20,6 +20,11 @@ public class IdeasApplication {
 		SpringApplication.run(IdeasApplication.class, args);
 	}
 
+	/*
+	* PostConstruct annotation is used to populate the database with an issue on startup for testing
+	* this is using same mechanism as controller so provides some assurance that the controller will eventually
+	* work as well.
+	*/
 	@PostConstruct
 	public void createIdeas() {
 		Ideas idea = new IdeaBuilder("test").createIdea();
