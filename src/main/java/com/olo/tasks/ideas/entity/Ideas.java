@@ -15,8 +15,20 @@ public class Ideas {
 
     private String name;
     private String description;
-    private int priority;
+    private Integer priority;
     private boolean goodIdea;
+
+    private Ideas() {
+
+    }
+
+    public Ideas(String name, String description, Integer priority, Boolean goodIdea) {
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+        this.goodIdea = goodIdea;
+    }
+
 
     public Ideas(IdeaBuilder builder) {
         name = builder.name;
@@ -33,7 +45,7 @@ public class Ideas {
         return description;
     }
 
-    public int getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
@@ -43,6 +55,22 @@ public class Ideas {
 
     public Long getId() {
         return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public void setGoodIdea(boolean goodIdea) {
+        this.goodIdea = goodIdea;
     }
 
 }

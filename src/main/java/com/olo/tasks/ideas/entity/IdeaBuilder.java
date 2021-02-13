@@ -16,7 +16,7 @@ public final class IdeaBuilder {
         return this;
     }   
 
-    public IdeaBuilder setPriority(int priority) {
+    public IdeaBuilder setPriority(Integer priority) {
         this.priority = priority;
         return this;
     }

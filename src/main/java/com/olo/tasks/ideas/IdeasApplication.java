@@ -1,5 +1,7 @@
 package com.olo.tasks.ideas;
 
+import java.util.Optional;
+
 import javax.annotation.PostConstruct;
 
 import com.olo.tasks.ideas.entity.IdeaBuilder;
@@ -22,13 +24,13 @@ public class IdeasApplication {
 
 	/*
 	* PostConstruct annotation is used to populate the database with an issue on startup for testing
-	* this is using same mechanism as controller so provides some assurance that the controller will eventually
+	* this is using same mechanism as controller so provides some assurance that the controller will
 	* work as well.
 	*/
 	@PostConstruct
 	public void createIdeas() {
-		Ideas idea = new IdeaBuilder("test").createIdea();
-		serviceInterface.createIdea(idea.getName(), null, null, null);
+		Ideas idea = new IdeaBuilder("test").setDescription(null).setPriority(9).setGoodIdea(true).createIdea();
+		serviceInterface.createIdea(idea.getName(), Optional.ofNullable(idea.getDescription()), Optional.ofNullable(idea.getPriority()), Optional.ofNullable(idea.isGoodIdea()));
 	}
 
 }
