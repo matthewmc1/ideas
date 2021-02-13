@@ -15,14 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JsonMapperIdeas implements JsonMapperService {
+public class JsonMapperServiceImpl implements JsonMapperService {
 
     IdeaRepository repository;
 
     static Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 
     @Autowired
-    public JsonMapperIdeas(IdeaRepository repository) {
+    public JsonMapperServiceImpl(IdeaRepository repository) {
         this.repository = repository;
     }
 

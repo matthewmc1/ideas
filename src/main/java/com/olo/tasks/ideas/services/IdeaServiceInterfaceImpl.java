@@ -22,7 +22,7 @@ public class IdeaServiceInterfaceImpl implements IdeaServiceInterface {
 
     @Override
     public void createIdea(String name, Optional<String> description, Optional<Integer> priority, Optional<Boolean> goodIdea) {
-        Ideas idea = new IdeaBuilder(name).createIdea();
+        Ideas idea = new IdeaBuilder(name).setDescription(description.isPresent() ? description.get() : "").setPriority(priority.isPresent() ? priority.get() : 0).setGoodIdea(goodIdea.isPresent() ? goodIdea.get() : false).createIdea();
         repository.save(idea);
     }
 
@@ -34,7 +34,10 @@ public class IdeaServiceInterfaceImpl implements IdeaServiceInterface {
     @Override
     public Ideas getHighestPriorityIdea() {
         List<Ideas> allIdeas = repository.findAll();
-        return allIdeas.get(allIdeas.size());
+        //comparing second value to first to sort desc and return highest value
+        //tested with null and 0 values 
+        allIdeas.sort((a, b) -> b.getPriority().compareTo(a.getPriority()));
+        return allIdeas.get(0);
     }
-    
+
 }

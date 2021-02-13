@@ -1,7 +1,9 @@
 package com.olo.tasks.ideas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.olo.tasks.ideas.entity.IdeaBuilder;
 import com.olo.tasks.ideas.entity.Ideas;
 import com.olo.tasks.ideas.services.IdeaServiceInterfaceImpl;
 
@@ -30,14 +32,23 @@ public class IdeaController {
       return "Hello application user, getting there!!!";
     }
 
+    @GetMapping("v1/ideas")
     @ResponseStatus(HttpStatus.OK)
     public List<Ideas> getAllIdeas() {
         return service.getAllIdeas();
     }
 
+    @GetMapping("v1/ideas/highest")
+    @ResponseStatus(HttpStatus.OK)
+    public Ideas getHighestPriority() {
+        return service.getHighestPriorityIdea();
+    }
+
+
     @PostMapping("v1/create")
     @ResponseStatus(HttpStatus.CREATED)
     public void createIdea(Ideas idea) {
-        service.createIdea(idea.getName(), null, null, null);
+        System.out.println(idea.getName());
+        service.createIdea(idea.getName(), Optional.ofNullable(idea.getDescription()), Optional.ofNullable(idea.getPriority()), Optional.ofNullable(idea.isGoodIdea()));
     }
 }
