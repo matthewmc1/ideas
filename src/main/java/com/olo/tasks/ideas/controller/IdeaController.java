@@ -3,7 +3,6 @@ package com.olo.tasks.ideas.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.olo.tasks.ideas.entity.IdeaBuilder;
 import com.olo.tasks.ideas.entity.Ideas;
 import com.olo.tasks.ideas.services.IdeaServiceInterfaceImpl;
 
