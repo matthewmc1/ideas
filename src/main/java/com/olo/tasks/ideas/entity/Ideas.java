@@ -18,7 +18,7 @@ public class Ideas {
     private Integer priority;
     private boolean goodIdea;
 
-    private Ideas() {
+    public Ideas() {
 
     }
 
