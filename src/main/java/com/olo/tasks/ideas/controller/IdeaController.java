@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,8 +47,7 @@ public class IdeaController {
 
     @PostMapping("v1/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createIdea(Ideas idea) {
-        System.out.println(idea.getName());
+    public void createIdea(@RequestBody Ideas idea) {
         service.createIdea(idea.getName(), Optional.ofNullable(idea.getDescription()), Optional.ofNullable(idea.getPriority()), Optional.ofNullable(idea.isGoodIdea()));
     }
 }
